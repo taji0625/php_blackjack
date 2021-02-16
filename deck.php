@@ -1,56 +1,19 @@
 <?php
 
-$deck = [
-  ["mark" => "heart" , "number" => "A"],
-  ["mark" => "heart" , "number" => 2],
-  ["mark" => "heart" , "number" => 3],
-  ["mark" => "heart" , "number" => 4],
-  ["mark" => "heart" , "number" => 5],
-  ["mark" => "heart" , "number" => 6],
-  ["mark" => "heart" , "number" => 7],
-  ["mark" => "heart" , "number" => 8],
-  ["mark" => "heart" , "number" => 9],
-  ["mark" => "heart" , "number" => 10],
-  ["mark" => "heart" , "number" => "J"],
-  ["mark" => "heart" , "number" => "Q"],
-  ["mark" => "heart" , "number" => "K"],
-  ["mark" => "dyer" , "number" => "A"],
-  ["mark" => "dyer" , "number" => 2],
-  ["mark" => "dyer" , "number" => 3],
-  ["mark" => "dyer" , "number" => 4],
-  ["mark" => "dyer" , "number" => 5],
-  ["mark" => "dyer" , "number" => 6],
-  ["mark" => "dyer" , "number" => 7],
-  ["mark" => "dyer" , "number" => 8],
-  ["mark" => "dyer" , "number" => 9],
-  ["mark" => "dyer" , "number" => 10],
-  ["mark" => "dyer" , "number" => "J"],
-  ["mark" => "dyer" , "number" => "Q"],
-  ["mark" => "dyer" , "number" => "K"],
-  ["mark" => "club" , "number" => "A"],
-  ["mark" => "club" , "number" => 2],
-  ["mark" => "club" , "number" => 3],
-  ["mark" => "club" , "number" => 4],
-  ["mark" => "club" , "number" => 5],
-  ["mark" => "club" , "number" => 6],
-  ["mark" => "club" , "number" => 7],
-  ["mark" => "club" , "number" => 8],
-  ["mark" => "club" , "number" => 9],
-  ["mark" => "club" , "number" => 10],
-  ["mark" => "club" , "number" => "J"],
-  ["mark" => "club" , "number" => "Q"],
-  ["mark" => "club" , "number" => "K"],
-  ["mark" => "spade" , "number" => "A"],
-  ["mark" => "spade" , "number" => 2],
-  ["mark" => "spade" , "number" => 3],
-  ["mark" => "spade" , "number" => 4],
-  ["mark" => "spade" , "number" => 5],
-  ["mark" => "spade" , "number" => 6],
-  ["mark" => "spade" , "number" => 7],
-  ["mark" => "spade" , "number" => 8],
-  ["mark" => "spade" , "number" => 9],
-  ["mark" => "spade" , "number" => 10],
-  ["mark" => "spade" , "number" => "J"],
-  ["mark" => "spade" , "number" => "Q"],
-  ["mark" => "spade" , "number" => "K"],
-];
+class deck
+{
+  public function __construct()
+  {
+    $cards = [];
+    $mk = ["スペード", "ハート", "ダイア", "クラブ"];
+    $num = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q" ,"K"];
+
+    foreach ($mk as $mark) {
+      foreach ($num as $number) {
+        $card = new Deck($mark, $number);
+        array_push($cards, $card);
+      }
+    }
+    shuffle($cards);
+  }
+}

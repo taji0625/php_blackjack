@@ -11,6 +11,10 @@ class Player
 
   public function firstDrawPlayer($deck)
   {
-    $hand = array_splice($deck, 0, 51);
+    $hand = [];
+    shuffle($deck);
+    $hand = array_rand($deck, 2);
+    echo $hand[1] . "\n";
+    echo "あなたのカード\n";
   }
 }
