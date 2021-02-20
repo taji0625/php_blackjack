@@ -9,12 +9,12 @@ class Player
     $this->tip = $tip;
   }
 
-  public function firstDrawPlayer($deck)
+  public function firstDrawPlayer($cards)
   {
-    $hand = [];
-    shuffle($deck);
-    $hand = array_rand($deck, 2);
-    echo $hand[1] . "\n";
-    echo "あなたのカード\n";
+    echo "カードが二枚配られた\n\n";
+    shuffle($cards);
+    $hand = array_splice($cards, 0, 2);
+    echo "あなたのカード\n" . "[" . $hand[0]->mark . "の" . $hand[0]->number . "]\n[" . $hand[1]->mark . "の" . $hand[1]->number . "]\n\n";
+    return $hand;
   }
 }

@@ -15,9 +15,10 @@ foreach ($mk as $mark) {
 }
 
 $dealer = new Dealer();
+$player = new Player(10000);
 
 $dealerHand = $dealer->firstDrawDealer($cards);
-
+$playerHand = $player->firstDrawPlayer($cards);
 
 
 
