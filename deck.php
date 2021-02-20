@@ -10,10 +10,10 @@ class deck
 
     foreach ($mk as $mark) {
       foreach ($num as $number) {
-        $card = new Deck($mark, $number);
-        array_push($cards, $card);
+        array_push($cards, [$mark, $number]);
       }
     }
     shuffle($cards);
+    var_dump($cards);
   }
 }
