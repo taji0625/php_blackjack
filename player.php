@@ -18,12 +18,13 @@ class Player
   public function decideOnBet()
   {
     echo "あなたは" . $this->getTip() . "チップ持っています\n";
-    echo "いくら掛けますか？\n";
+    echo "いくら賭けますか？\n";
     while(true) {
-      echo "掛け金を入力してください\n";
+      echo "賭け金を入力してください\n";
       $bet = trim(fgets(STDIN));
       if(is_numeric($bet)) {
         $this->tip -= $bet;
+        echo "\n" . $bet . "チップを賭けた\n";
         break;
       }
       echo "数字で入力してください！\n\n";
