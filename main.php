@@ -3,6 +3,7 @@
 require_once "./deck.php";
 require_once "./dealer.php";
 require_once "./player.php";
+require_once "./choices.php";
 
 
 
@@ -23,7 +24,7 @@ $player->decideOnBet();
 
 $dealerHand = $dealer->firstDrawDealer($cards);
 $playerHand = $player->firstDrawPlayer($cards);
-
+$player->firstDecisionPlayer($playerHand, $choicesParams);
 
 
 

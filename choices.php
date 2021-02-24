@@ -1,0 +1,5 @@
+<?php
+
+$choicesParams = [
+  "ヒット",  "スタンド"
+];
