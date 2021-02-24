@@ -44,9 +44,19 @@ class Player
 
   public function firstDecisionPlayer($playerHand, $choicesParams)
   {
-    echo "ステイかスタンドの番号を入力してください\n\n";
     foreach ($choicesParams as $i => $choice) {
+      $i++;
       echo $i . ". ". $choice . "\n";
     }
+    echo "\n";
+    while (true) {
+      echo "ステイかスタンドの番号を入力してください\n\n";
+      $selectChoiceNum = trim(fgets(STDIN));
+      if ($selectChoiceNum == 1 || $selectChoiceNum == 2) {
+        break;
+      }
+      echo "1か2を入力してください！\n";
+    }
+    return $selectChoiceNum;
   }
 }
