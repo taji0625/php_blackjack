@@ -24,7 +24,12 @@ $player->decideOnBet();
 
 $dealerHand = $dealer->firstDrawDealer($cards);
 $playerHand = $player->firstDrawPlayer($cards);
-$player->firstDecisionPlayer($playerHand, $choicesParams);
+$playerSelectedAction = $player->firstDecisionPlayer($playerHand, $choicesParams);
+if ($playerSelectedAction == 1) {
+  $player->hit($playerHand, $cards);
+} else {
+  $player->stand();
+}
 
 
 

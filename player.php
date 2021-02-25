@@ -59,4 +59,14 @@ class Player
     }
     return $selectChoiceNum;
   }
+
+  public function hit($playerHand, $cards)
+  {
+    echo "\nヒット！\n";
+    echo "カードが一枚配られた\n\n";
+    $hitCard = array_splice($cards, 0, 1);
+    $playerHand = array_merge($playerHand, $hitCard);
+    echo "あなたのカード\n" . "[" . $playerHand[0]->mark . "の" . $playerHand[0]->number . "]\n[" . $playerHand[1]->mark . "の" . $playerHand[1]->number . "]\n[" . $playerHand[2]->mark . "の" . $playerHand[2]->number . "]\n\n";
+    return $playerHand;
+  }
 }
