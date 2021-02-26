@@ -50,7 +50,7 @@ class Player
     }
     echo "\n";
     while (true) {
-      echo "ステイかスタンドの番号を入力してください\n\n";
+      echo "ヒットかスタンドの番号を入力してください\n\n";
       $selectChoiceNum = trim(fgets(STDIN));
       if ($selectChoiceNum == 1 || $selectChoiceNum == 2) {
         break;
@@ -64,9 +64,20 @@ class Player
   {
     echo "\nヒット！\n";
     echo "カードが一枚配られた\n\n";
+    shuffle($cards);
     $hitCard = array_splice($cards, 0, 1);
     $playerHand = array_merge($playerHand, $hitCard);
-    echo "あなたのカード\n" . "[" . $playerHand[0]->mark . "の" . $playerHand[0]->number . "]\n[" . $playerHand[1]->mark . "の" . $playerHand[1]->number . "]\n[" . $playerHand[2]->mark . "の" . $playerHand[2]->number . "]\n\n";
+    echo "あなたのカード\n";
+    foreach ($playerHand as $playerCard) {
+      echo "[" . $playerCard->mark . "の" . $playerCard->number . "]\n";
+    }
+    echo "\n";
+    return $playerHand;
+  }
+
+  public function stand($playerHand)
+  {
+    echo "\nスタンド！\n";
     return $playerHand;
   }
 }
