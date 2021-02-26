@@ -38,7 +38,7 @@ class Player
   {
     shuffle($cards);
     $hand = array_splice($cards, 0, 2);
-    echo "あなたのカード\n" . "[" . $hand[0]->mark . "の" . $hand[0]->number . "]\n[" . $hand[1]->mark . "の" . $hand[1]->number . "]\n\n";
+    echo "あなたのカード\n" . "[" . $hand[0]->mark . " の" . $hand[0]->number . "]\n[" . $hand[1]->mark . " の" . $hand[1]->number . "]\n\n";
     return $hand;
   }
 
@@ -69,7 +69,7 @@ class Player
     $playerHand = array_merge($playerHand, $hitCard);
     echo "あなたのカード\n";
     foreach ($playerHand as $playerCard) {
-      echo "[" . $playerCard->mark . "の" . $playerCard->number . "]\n";
+      echo "[" . $playerCard->mark . " の" . $playerCard->number . "]\n";
     }
     echo "\n";
     return $playerHand;
