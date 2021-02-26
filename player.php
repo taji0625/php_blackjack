@@ -34,10 +34,13 @@ class Player
     }
   }
 
-  public function firstDrawPlayer($cards)
+  public function firstDrawPlayer($deck)
   {
-    shuffle($cards);
-    $hand = array_splice($cards, 0, 2);
+    $hand = [];
+    shuffle($deck);
+    $hitCard1 = array_shift($deck);
+    $hitCard2 = array_shift($deck);
+    array_push($hand, $hitCard1, $hitCard2);
     echo "あなたのカード\n" . "[" . $hand[0]->mark . " の" . $hand[0]->number . "]\n[" . $hand[1]->mark . " の" . $hand[1]->number . "]\n\n";
     return $hand;
   }
@@ -60,13 +63,12 @@ class Player
     return $selectChoiceNum;
   }
 
-  public function hit($playerHand, $cards)
+  public function hit($playerHand, $deck)
   {
     echo "\nヒット！\n";
     echo "カードが一枚配られた\n\n";
-    shuffle($cards);
-    $hitCard = array_splice($cards, 0, 1);
-    $playerHand = array_merge($playerHand, $hitCard);
+    $hitCard = array_shift($deck);
+    array_push($playerHand, $hitCard);
     echo "あなたのカード\n";
     foreach ($playerHand as $playerCard) {
       echo "[" . $playerCard->mark . " の" . $playerCard->number . "]\n";
