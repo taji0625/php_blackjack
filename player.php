@@ -91,12 +91,19 @@ class Player
       if ($pHand->number == "K" || $pHand->number == "Q" || $pHand->number == "J") {
         $pHand->number = 10;
         array_push($numbers, $pHand->number);
-        $numCalc = array_sum($numbers);
+      } elseif ($pHand->number == "A") {
+        if ($numbers <= 10) {
+          $pHand->number = 11;
+          array_push($numbers, $pHand->number);
+        } else {
+          $pHand->number = 1;
+          array_push($numbers, $pHand->number);
+        }
       } else {
         array_push($numbers, $pHand->number);
-        $numCalc = array_sum($numbers);
       }
     }
+    $numCalc = array_sum($numbers);
     var_dump($numCalc);
   }
 }
