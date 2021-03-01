@@ -67,6 +67,7 @@ class Player
   {
     echo "\nヒット！\n";
     echo "カードが一枚配られた\n\n";
+    shuffle($deck);
     $hitCard = array_shift($deck);
     array_push($playerHand, $hitCard);
     echo "あなたのカード\n";
@@ -81,5 +82,21 @@ class Player
   {
     echo "\nスタンド！\n";
     return $playerHand;
+  }
+
+  public function numericCalc($playerHand)
+  {
+    $numbers = [];
+    foreach ($playerHand as $pHand) {
+      if ($pHand->number == "K" || $pHand->number == "Q" || $pHand->number == "J") {
+        $pHand->number = 10;
+        array_push($numbers, $pHand->number);
+        $numCalc = array_sum($numbers);
+      } else {
+        array_push($numbers, $pHand->number);
+        $numCalc = array_sum($numbers);
+      }
+    }
+    var_dump($numCalc);
   }
 }

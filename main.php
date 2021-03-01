@@ -31,7 +31,8 @@ while (true) {
     break;
   }
 }
-$player->stand($playerHand);
+$playerHand = $player->stand($playerHand);
+$player->numericCalc($playerHand);
 
 
 
