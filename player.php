@@ -74,7 +74,6 @@ class Player
     foreach ($playerHand as $playerCard) {
       echo "[" . $playerCard->mark . " の" . $playerCard->number . "]\n";
     }
-    echo "\n";
     return $playerHand;
   }
 
@@ -104,6 +103,6 @@ class Player
       }
     }
     $numCalc = array_sum($numbers);
-    var_dump($numCalc);
+    echo "あなたのカード合計【${numCalc}】\n\n";
   }
 }

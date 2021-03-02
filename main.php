@@ -23,10 +23,13 @@ $player = new Player(10000);
 $player->decideOnBet();
 $dealerHand = $dealer->firstDrawDealer($deck);
 $playerHand = $player->firstDrawPlayer($deck);
+$player->numericCalc($playerHand);
 while (true) {
   $playerSelectedAction = $player->firstDecisionPlayer($playerHand, $choicesParams);
   if ($playerSelectedAction == 1) {
     $playerHand = $player->hit($playerHand, $deck);
+    $player->numericCalc($playerHand);
+    
   } else {
     break;
   }
