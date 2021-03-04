@@ -4,6 +4,7 @@ require_once "./deck.php";
 require_once "./dealer.php";
 require_once "./player.php";
 require_once "./choices.php";
+require_once "./judgment.php";
 
 
 
@@ -19,6 +20,7 @@ foreach ($mk as $mark) {
 
 $dealer = new Dealer();
 $player = new Player(10000);
+$judgment = new Judgment();
 
 $player->decideOnBet();
 $dealerHand = $dealer->firstDrawDealer($deck);
@@ -28,14 +30,18 @@ while (true) {
   $playerSelectedAction = $player->firstDecisionPlayer($playerHand, $choicesParams);
   if ($playerSelectedAction == 1) {
     $playerHand = $player->hit($playerHand, $deck);
-    $player->numericCalc($playerHand);
-    
+    $playerNumCalc = $player->numericCalc($playerHand);
+    if ($playerNumCalc > 21) {
+      echo "バースト！\n";
+      break;
+    }
   } else {
+    $playerHand = $player->stand($playerHand);
+    $playerNumCalc = $player->numericCalc($playerHand);
     break;
   }
 }
-$playerHand = $player->stand($playerHand);
-$player->numericCalc($playerHand);
+
 
 
 

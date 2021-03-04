@@ -104,5 +104,6 @@ class Player
     }
     $numCalc = array_sum($numbers);
     echo "あなたのカード合計【${numCalc}】\n\n";
+    return $numCalc;
   }
 }
