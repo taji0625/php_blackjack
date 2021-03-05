@@ -45,7 +45,7 @@ class Player
     return $hand;
   }
 
-  public function firstDecisionPlayer($playerHand, $choicesParams)
+  public function DecisionPlayer($playerHand, $choicesParams)
   {
     foreach ($choicesParams as $i => $choice) {
       $i++;

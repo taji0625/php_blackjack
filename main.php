@@ -27,7 +27,7 @@ $dealerHand = $dealer->firstDrawDealer($deck);
 $playerHand = $player->firstDrawPlayer($deck);
 $player->numericCalc($playerHand);
 while (true) {
-  $playerSelectedAction = $player->firstDecisionPlayer($playerHand, $choicesParams);
+  $playerSelectedAction = $player->DecisionPlayer($playerHand, $choicesParams);
   if ($playerSelectedAction == 1) {
     $playerHand = $player->hit($playerHand, $deck);
     $playerNumCalc = $player->numericCalc($playerHand);
