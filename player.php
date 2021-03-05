@@ -88,15 +88,15 @@ class Player
     $numbers = [];
     foreach ($playerHand as $pHand) {
       if ($pHand->number == "K" || $pHand->number == "Q" || $pHand->number == "J") {
-        $pHand->number = 10;
-        array_push($numbers, $pHand->number);
+        $pHand->calcNum = 10;
+        array_push($numbers, $pHand->calcNum);
       } elseif ($pHand->number == "A") {
         if ($numbers <= 10) {
-          $pHand->number = 11;
-          array_push($numbers, $pHand->number);
+          $pHand->calcNum = 11;
+          array_push($numbers, $pHand->calcNum);
         } else {
-          $pHand->number = 1;
-          array_push($numbers, $pHand->number);
+          $pHand->calcNum = 1;
+          array_push($numbers, $pHand->calcNum);
         }
       } else {
         array_push($numbers, $pHand->number);
