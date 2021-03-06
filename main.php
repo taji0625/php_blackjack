@@ -32,7 +32,7 @@ while (true) {
     $playerHand = $player->hit($playerHand, $deck);
     $playerNumCalc = $player->numericCalc($playerHand);
     if ($playerNumCalc > 21) {
-      echo "バースト！\n";
+      echo "バースト！\n\n";
       break;
     }
   } else {
@@ -43,8 +43,11 @@ while (true) {
 }
 
 $dealer->cardOpen($dealerHand);
-$dealer->numericCalc($dealerHand);
-
+$dealerNumCalc = $dealer->numericCalc($dealerHand);
+while ($dealerNumCalc < 17) {
+  $dealerHand = $dealer->hit($dealerHand, $deck);
+  $dealerNumCalc = $dealer->numericCalc($dealerHand);
+}
 
 
 

@@ -40,7 +40,21 @@ class Dealer
       }
     }
     $numCalc = array_sum($numbers);
-    echo "ディーラーのカード合計【${numCalc}】\n\n";
+    echo "ディーラーのカード合計【${numCalc}】\n";
     return $numCalc;
+  }
+
+  public function hit($dealerHand, $deck)
+  {
+    echo "\nディーラーがカードをヒット！\n";
+    shuffle($deck);
+    $hitCard = array_shift($deck);
+    array_push($dealerHand, $hitCard);
+    echo "ディーラーのカード\n";
+    foreach ($dealerHand as $dealerCard) {
+      echo "[" . $dealerCard->mark . " の" . $dealerCard->number . "]\n";
+    }
+    echo "\n";
+    return $dealerHand;
   }
 }
