@@ -42,6 +42,7 @@ while (true) {
   }
 }
 
+$dealer->cardOpen($dealerHand);
 $dealer->numericCalc($dealerHand);
 
 
