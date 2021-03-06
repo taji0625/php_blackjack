@@ -42,6 +42,8 @@ while (true) {
   }
 }
 
+$dealer->numericCalc($dealerHand);
+
 
 
 
