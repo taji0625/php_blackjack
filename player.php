@@ -18,7 +18,7 @@ class Player
 
   public function decideOnBet()
   {
-    echo "あなたは" . $this->getTip() . "円持っています\n";
+    echo "\nあなたは" . $this->getTip() . "円持っています\n";
     echo "いくら賭けますか？\n";
     while(true) {
       echo "賭け金を入力してください\n";
@@ -35,7 +35,7 @@ class Player
           return $bet;
           break;
         } else {
-          echo "所持金の範囲内で入力してください！\n\n";
+          echo "\n所持金の範囲内で入力してください！\n\n";
         }
       } else {
         echo "数字で入力してください！\n\n";
@@ -100,7 +100,7 @@ class Player
         $pHand->calcNum = 10;
         array_push($numbers, $pHand->calcNum);
       } elseif ($pHand->number == "A") {
-        if ($numbers <= 10) {
+        if ($numbers <= 10 || empty($numbers)) {
           $pHand->calcNum = 11;
           array_push($numbers, $pHand->calcNum);
         } else {
@@ -130,7 +130,7 @@ class Player
       if ($selectContinueNum == 1 || $selectContinueNum == 2) {
         break;
       }
-      echo "1か2を入力してください！\n";
+      echo "1か2を入力してください！\n\n";
     }
     return $selectContinueNum;
   }
@@ -140,7 +140,7 @@ class Player
     echo "\nあなたの勝ち\n";
     $winningTip = $bet * 2;
     $this->tip += $winningTip;
-    echo "所持金が" . $winningTip . "円増えた\n"; 
+    echo "所持金が" . $bet . "円増えた\n"; 
     echo "あなたの所持金" . $this->getTip() . "円\n";
   }
 

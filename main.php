@@ -22,54 +22,51 @@ $dealer = new Dealer();
 $player = new Player(10000);
 $judgment = new Judgment();
 
-$bet = $player->decideOnBet();
-$dealerHand = $dealer->firstDrawDealer($deck);
-$playerHand = $player->firstDrawPlayer($deck);
-$player->numericCalc($playerHand);
-while (true) {
-  $playerSelectedAction = $player->DecisionPlayer($playerHand, $choicesParams);
-  if ($playerSelectedAction == 1) {
-    $playerHand = $player->hit($playerHand, $deck);
-    $playerNumCalc = $player->numericCalc($playerHand);
-    if ($playerNumCalc > 21) {
-      $player->lose($bet);
-      break;
-    }
-  } else {
-    $playerHand = $player->stand($playerHand);
-    $playerNumCalc = $player->numericCalc($playerHand);
-    $dealer->cardOpen($dealerHand);
-    $dealerNumCalc = $dealer->numericCalc($dealerHand);
-    while ($dealerNumCalc < 17) {
-      $dealerHand = $dealer->hit($dealerHand, $deck);
-      $dealerNumCalc = $dealer->numericCalc($dealerHand);
-      if ($dealerNumCalc > 21) {
-        echo "バースト！\n\n";
-        $player->win($bet);    
+while ($selectContinueNum == 1 || $player->getTip() > 0) {
+
+  $bet = $player->decideOnBet();
+  $dealerHand = $dealer->firstDrawDealer($deck);
+  $playerHand = $player->firstDrawPlayer($deck);
+  $player->numericCalc($playerHand);
+  while (true) {
+    $playerSelectedAction = $player->DecisionPlayer($playerHand, $choicesParams);
+    if ($playerSelectedAction == 1) {
+      $playerHand = $player->hit($playerHand, $deck);
+      $playerNumCalc = $player->numericCalc($playerHand);
+      if ($playerNumCalc > 21) {
+        echo "バースト\n";
+        $player->lose($bet);
         break;
       }
-    }
-    if ($dealerNumCalc <= 21) {
-      switch ($playerNumCalc) {
-        case $playerNumCalc > $dealerNumCalc :
-          $player->win($bet);
+    } else {
+      $playerHand = $player->stand($playerHand);
+      $playerNumCalc = $player->numericCalc($playerHand);
+      $dealer->cardOpen($dealerHand);
+      $dealerNumCalc = $dealer->numericCalc($dealerHand);
+      while ($dealerNumCalc < 17) {
+        $dealerHand = $dealer->hit($dealerHand, $deck);
+        $dealerNumCalc = $dealer->numericCalc($dealerHand);
+        if ($dealerNumCalc > 21) {
+          echo "バースト！\n\n";
+          $player->win($bet);    
           break;
-        case $playerNumCalc == $dealerNumCalc :
-          $player->draw($bet);
-          break;
-        case $playerNumCalc < $dealerNumCalc :
-          $player->lose($bet);
-          break;
+        }
       }
+      if ($dealerNumCalc <= 21) {
+        switch ($playerNumCalc) {
+          case $playerNumCalc > $dealerNumCalc :
+            $player->win($bet);
+            break;
+          case $playerNumCalc == $dealerNumCalc :
+            $player->draw($bet);
+            break;
+          case $playerNumCalc < $dealerNumCalc :
+            $player->lose($bet);
+            break;
+        }
+      }
+      break;
     }
   }
+  $selectContinueNum = $player->continue($continueParams);
 }
-
-$selectContinueNum = $player->continue($continueParams);
-
-
-
-
-
-
-

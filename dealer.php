@@ -28,7 +28,7 @@ class Dealer
         $dHand->calcNum = 10;
         array_push($numbers, $dHand->calcNum);
       } elseif ($dHand->number == "A") {
-        if ($numbers <= 10) {
+        if ($numbers <= 10  || empty($numbers)) {
           $dHand->calcNum = 11;
           array_push($numbers, $dHand->calcNum);
         } else {
