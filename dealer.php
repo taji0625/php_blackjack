@@ -2,7 +2,7 @@
 
 class Dealer
 {
-  public function firstDrawDealer($deck)
+  public function firstDrawDealer($deck): array
   {
     echo "\nカードが二枚ずつ配られた\n\n";
     $dealerHand = [];
@@ -20,7 +20,7 @@ class Dealer
     echo "ディーラーのカード\n" . "[" . $dealerHand[0]->mark . " の" . $dealerHand[0]->number . "]\n[" . $dealerHand[1]->mark . " の" . $dealerHand[1]->number . "]\n\n";
   }
 
-  public function numericCalc($dealerHand)
+  public function numericCalc($dealerHand): string
   {
     $numbers = [];
     foreach ($dealerHand as $dHand) {
@@ -51,7 +51,7 @@ class Dealer
     return $numCalc;
   }
 
-  public function hit($dealerHand, $deck)
+  public function hit($dealerHand, $deck): array
   {
     echo "\nディーラーがカードをヒット！\n";
     shuffle($deck);

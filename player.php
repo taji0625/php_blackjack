@@ -16,7 +16,7 @@ class Player
     return $this->tip;
   }
 
-  public function decideOnBet()
+  public function decideOnBet(): string
   {
     echo "\nあなたは" . $this->getTip() . "円持っています\n";
     echo "いくら賭けますか？\n";
@@ -43,7 +43,7 @@ class Player
     }
   }
 
-  public function firstDrawPlayer($deck)
+  public function firstDrawPlayer($deck): array
   {
     $hand = [];
     shuffle($deck);
@@ -54,7 +54,7 @@ class Player
     return $hand;
   }
 
-  public function DecisionPlayer($playerHand, $choicesParams)
+  public function DecisionPlayer($playerHand, $choicesParams): string
   {
     foreach ($choicesParams as $i => $choice) {
       $i++;
@@ -72,7 +72,7 @@ class Player
     return $selectChoiceNum;
   }
 
-  public function hit($playerHand, $deck)
+  public function hit($playerHand, $deck): array
   {
     echo "\nヒット！\n";
     echo "カードが一枚配られた\n\n";
@@ -86,13 +86,13 @@ class Player
     return $playerHand;
   }
 
-  public function stand($playerHand)
+  public function stand($playerHand): array
   {
     echo "\nスタンド！\n";
     return $playerHand;
   }
 
-  public function numericCalc($playerHand)
+  public function numericCalc($playerHand): string
   {
     $numbers = [];
     foreach ($playerHand as $pHand) {
