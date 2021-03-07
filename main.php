@@ -22,7 +22,7 @@ $dealer = new Dealer();
 $player = new Player(10000);
 $judgment = new Judgment();
 
-while ($selectContinueNum == 1 || $player->getTip() > 0) {
+while (true) {
   $bet = $player->decideOnBet();
   $dealerHand = $dealer->firstDrawDealer($deck);
   $playerHand = $player->firstDrawPlayer($deck);
@@ -69,6 +69,10 @@ while ($selectContinueNum == 1 || $player->getTip() > 0) {
   }
   if ($player->getTip() > 0) {
     $selectContinueNum = $player->continue($continueParams);
+    if ($selectContinueNum == 2) {
+      echo "また遊びに来てね\n";
+      break;
+    }
   } else {
     echo "\n所持金がなくなり破産\n";
     break;
