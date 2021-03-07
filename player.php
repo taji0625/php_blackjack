@@ -129,4 +129,13 @@ class Player
     }
     return $selectContinueNum;
   }
+
+  public function win($bet)
+  {
+    echo "あなたの勝ち\n";
+    $winningTip = $bet * 2;
+    $this->tip += $winningTip;
+    echo "お金が" . $winningTip . "円増えた\n"; 
+    echo "あなたの所持金" . $this->getTip() . "円\n";
+  }
 }

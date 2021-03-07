@@ -47,6 +47,7 @@ while (true) {
       $dealerNumCalc = $dealer->numericCalc($dealerHand);
       if ($dealerNumCalc > 21) {
         echo "バースト！\n\n";
+        $player->win($bet);        
         break;
       }
     }
