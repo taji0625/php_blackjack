@@ -138,4 +138,11 @@ class Player
     echo "お金が" . $winningTip . "円増えた\n"; 
     echo "あなたの所持金" . $this->getTip() . "円\n";
   }
+
+  public function draw($bet)
+  {
+    echo "引き分け\n";
+    $this->tip += $bet;
+    echo "あなたの所持金" . $this->getTip() . "円\n";
+  }
 }

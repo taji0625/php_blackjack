@@ -42,16 +42,30 @@ while (true) {
     $playerNumCalc = $player->numericCalc($playerHand);
     $dealer->cardOpen($dealerHand);
     $dealerNumCalc = $dealer->numericCalc($dealerHand);
-    while ($dealerNumCalc < 17) {
-      $dealerHand = $dealer->hit($dealerHand, $deck);
-      $dealerNumCalc = $dealer->numericCalc($dealerHand);
-      if ($dealerNumCalc > 21) {
-        echo "バースト！\n\n";
-        $player->win($bet);        
-        break;
+    while (true) {
+      while ($dealerNumCalc < 17) {
+        $dealerHand = $dealer->hit($dealerHand, $deck);
+        $dealerNumCalc = $dealer->numericCalc($dealerHand);
+        if ($dealerNumCalc > 21) {
+          echo "バースト！\n\n";
+          $player->win($bet);    
+          break;
+        }
+        if ($playerNumCalc > $dealerNumCalc) {
+          $player->win($bet);
+          break;
+        } elseif ($playerNumCalc == $dealerNumCalc) {
+          $player->draw($bet);
+          break;
+        } else {
+          echo "あなたの負け\n";
+          echo "あなたは" . $bet . "円を失った\n";
+          echo "あなたの所持金" . $player->getTip() . "円\n";
+          break;
+        }
       }
+      break;
     }
-    break;
   }
 }
 
