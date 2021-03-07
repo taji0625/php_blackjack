@@ -104,7 +104,8 @@ class Player
           array_push($numbers, $pHand->calcNum);
           break;
         case 'A':
-          if ($numbers < 11 || empty($numbers)) {
+          $provisionalNum = array_sum($numbers);
+          if ($provisionalNum < 11 || empty($numbers)) {
             $pHand->calcNum = 11;
             array_push($numbers, $pHand->calcNum);
             break;

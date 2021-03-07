@@ -32,7 +32,8 @@ class Dealer
           array_push($numbers, $dHand->calcNum);
           break;
         case 'A':
-          if ($numbers < 11 || empty($numbers)) {
+          $provisionalNum = array_sum($numbers);
+          if ($provisionalNum < 11 || empty($numbers)) {
             $dHand->calcNum = 11;
             array_push($numbers, $dHand->calcNum);
             break;
