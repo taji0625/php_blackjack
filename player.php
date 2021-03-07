@@ -29,8 +29,13 @@ class Player
           echo "\n" . $bet . "円を賭けた\n";
           return $bet;
           break;
+        } elseif ($bet == $this->getTip())  {
+          $this->tip -= $bet;
+          echo "\nオールイン！！\n";
+          return $bet;
+          break;
         } else {
-          echo "所持金の範囲内で入力してください！\n";
+          echo "所持金の範囲内で入力してください！\n\n";
         }
       } else {
         echo "数字で入力してください！\n\n";
@@ -132,17 +137,24 @@ class Player
 
   public function win($bet)
   {
-    echo "あなたの勝ち\n";
+    echo "\nあなたの勝ち\n";
     $winningTip = $bet * 2;
     $this->tip += $winningTip;
-    echo "お金が" . $winningTip . "円増えた\n"; 
+    echo "所持金が" . $winningTip . "円増えた\n"; 
     echo "あなたの所持金" . $this->getTip() . "円\n";
   }
 
   public function draw($bet)
   {
-    echo "引き分け\n";
+    echo "\n引き分け\n";
     $this->tip += $bet;
+    echo "あなたの所持金" . $this->getTip() . "円\n";
+  }
+
+  public function lose($bet)
+  {
+    echo "あなたの負け\n";
+    echo "あなたは" . $bet . "円を失った\n";
     echo "あなたの所持金" . $this->getTip() . "円\n";
   }
 }
