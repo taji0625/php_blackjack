@@ -96,19 +96,25 @@ class Player
   {
     $numbers = [];
     foreach ($playerHand as $pHand) {
-      if ($pHand->number == "K" || $pHand->number == "Q" || $pHand->number == "J") {
-        $pHand->calcNum = 10;
-        array_push($numbers, $pHand->calcNum);
-      } elseif ($pHand->number == "A") {
-        if ($numbers <= 10 || empty($numbers)) {
-          $pHand->calcNum = 11;
+      switch ($pHand->number) {
+        case 'K':
+        case 'Q':
+        case 'J':
+          $pHand->calcNum = 10;
           array_push($numbers, $pHand->calcNum);
-        } else {
-          $pHand->calcNum = 1;
-          array_push($numbers, $pHand->calcNum);
-        }
-      } else {
-        array_push($numbers, $pHand->number);
+          break;
+        case 'A':
+          if ($numbers < 11 || empty($numbers)) {
+            $pHand->calcNum = 11;
+            array_push($numbers, $pHand->calcNum);
+            break;
+          } else {
+            $pHand->calcNum = 1;
+            array_push($numbers, $pHand->calcNum);
+            break;
+          }
+        default:
+          array_push($numbers, $pHand->number);
       }
     }
     $numCalc = array_sum($numbers);
@@ -153,7 +159,7 @@ class Player
 
   public function lose($bet)
   {
-    echo "あなたの負け\n";
+    echo "\nあなたの負け\n";
     echo "あなたは" . $bet . "円を失った\n";
     echo "あなたの所持金" . $this->getTip() . "円\n";
   }

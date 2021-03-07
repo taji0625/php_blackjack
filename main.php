@@ -70,11 +70,11 @@ while (true) {
   if ($player->getTip() > 0) {
     $selectContinueNum = $player->continue($continueParams);
     if ($selectContinueNum == 2) {
-      echo "また遊びに来てね\n";
+      echo "また遊びに来てね\n\n";
       break;
     }
   } else {
-    echo "\n所持金がなくなり破産\n";
+    echo "\n所持金がなくなり破産\n\n";
     break;
   }
 }

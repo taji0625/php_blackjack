@@ -24,19 +24,25 @@ class Dealer
   {
     $numbers = [];
     foreach ($dealerHand as $dHand) {
-      if ($dHand->number == "K" || $dHand->number == "Q" || $dHand->number == "J") {
-        $dHand->calcNum = 10;
-        array_push($numbers, $dHand->calcNum);
-      } elseif ($dHand->number == "A") {
-        if ($numbers <= 10  || empty($numbers)) {
-          $dHand->calcNum = 11;
+      switch ($dHand->number) {
+        case 'K':
+        case 'Q':
+        case 'J':
+          $dHand->calcNum = 10;
           array_push($numbers, $dHand->calcNum);
-        } else {
-          $dHand->calcNum = 1;
-          array_push($numbers, $dHand->calcNum);
-        }
-      } else {
-        array_push($numbers, $dHand->number);
+          break;
+        case 'A':
+          if ($numbers < 11 || empty($numbers)) {
+            $dHand->calcNum = 11;
+            array_push($numbers, $dHand->calcNum);
+            break;
+          } else {
+            $dHand->calcNum = 1;
+            array_push($numbers, $dHand->calcNum);
+            break;
+          }
+        default:
+          array_push($numbers, $dHand->number);
       }
     }
     $numCalc = array_sum($numbers);
