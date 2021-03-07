@@ -25,13 +25,18 @@ class Player
     while(true) {
       echo "賭け金を入力してください\n";
       $bet = trim(fgets(STDIN));
-      if(is_numeric($bet)) {
-        $this->tip -= $bet;
-        echo "\n" . $bet . "円を賭けた\n";
-        return $bet;
-        break;
+      if (is_numeric($bet)) {
+        if ($bet < $this->getTip()) {
+          $this->tip -= $bet;
+          echo "\n" . $bet . "円を賭けた\n";
+          return $bet;
+          break;
+        } else {
+          echo "所持金の範囲内で入力してください！\n";
+        }
+      } else {
+        echo "数字で入力してください！\n\n";
       }
-      echo "数字で入力してください！\n\n";
     }
   }
 
