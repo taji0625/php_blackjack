@@ -34,6 +34,7 @@ while (true) {
     if ($playerNumCalc > 21) {
       echo "バースト！\n\n";
       echo "あなたは" . $bet . "円を失った\n";
+      echo "あなたの所持金" . $player->getTip() . "円\n";
       break;
     }
   } else {
@@ -53,6 +54,7 @@ while (true) {
   }
 }
 
+$selectContinueNum = $player->continue($continueParams);
 
 
 

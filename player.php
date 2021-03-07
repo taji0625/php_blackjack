@@ -1,7 +1,5 @@
 <?php
 
-require_once "./choices.php";
-
 
 class Player
 {
@@ -111,5 +109,24 @@ class Player
     $numCalc = array_sum($numbers);
     echo "あなたのカード合計【${numCalc}】\n\n";
     return $numCalc;
+  }
+
+  public function continue($continueParams)
+  {
+    echo "\nゲームを続けますか？\n";
+    foreach ($continueParams as $i => $continueParam) {
+      $i++;
+      echo $i . ". " . $continueParam . "\n";
+    }
+    echo "\n";
+    while (true) {
+      echo "続けるかやめるかの番号を入力してください\n\n";
+      $selectContinueNum = trim(fgets(STDIN));
+      if ($selectContinueNum == 1 || $selectContinueNum == 2) {
+        break;
+      }
+      echo "1か2を入力してください！\n";
+    }
+    return $selectContinueNum;
   }
 }
