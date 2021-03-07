@@ -22,7 +22,7 @@ $dealer = new Dealer();
 $player = new Player(10000);
 $judgment = new Judgment();
 
-$player->decideOnBet();
+$bet = $player->decideOnBet();
 $dealerHand = $dealer->firstDrawDealer($deck);
 $playerHand = $player->firstDrawPlayer($deck);
 $player->numericCalc($playerHand);
@@ -33,21 +33,27 @@ while (true) {
     $playerNumCalc = $player->numericCalc($playerHand);
     if ($playerNumCalc > 21) {
       echo "バースト！\n\n";
+      echo "あなたは" . $bet . "円を失った\n";
       break;
     }
   } else {
     $playerHand = $player->stand($playerHand);
     $playerNumCalc = $player->numericCalc($playerHand);
+    $dealer->cardOpen($dealerHand);
+    $dealerNumCalc = $dealer->numericCalc($dealerHand);
+    while ($dealerNumCalc < 17) {
+      $dealerHand = $dealer->hit($dealerHand, $deck);
+      $dealerNumCalc = $dealer->numericCalc($dealerHand);
+      if ($dealerNumCalc > 21) {
+        echo "バースト！\n\n";
+        break;
+      }
+    }
     break;
   }
 }
 
-$dealer->cardOpen($dealerHand);
-$dealerNumCalc = $dealer->numericCalc($dealerHand);
-while ($dealerNumCalc < 17) {
-  $dealerHand = $dealer->hit($dealerHand, $deck);
-  $dealerNumCalc = $dealer->numericCalc($dealerHand);
-}
+
 
 
 
