@@ -47,14 +47,14 @@ while (true) {
         $dealerNumCalc = $dealer->numericCalc($dealerHand);
         if ($dealerNumCalc > 21) {
           echo "バースト！\n\n";
-          $player->win($bet);    
+          $player->win($bet, $playerHand);    
           break;
         }
       }
       if ($dealerNumCalc <= 21) {
         switch ($playerNumCalc) {
           case $playerNumCalc > $dealerNumCalc :
-            $player->win($bet);
+            $player->win($bet, $playerHand);
             break;
           case $playerNumCalc == $dealerNumCalc :
             $player->draw($bet);

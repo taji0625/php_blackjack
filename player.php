@@ -142,13 +142,27 @@ class Player
     return $selectContinueNum;
   }
 
-  public function win($bet)
+  public function win($bet, $playerHand)
   {
-    echo "\nあなたの勝ち\n";
-    $winningTip = $bet * 2;
-    $this->tip += $winningTip;
-    echo "所持金が" . $bet . "円増えた\n"; 
-    echo "あなたの所持金" . $this->getTip() . "円\n";
+    $includeA = in_array('A', array_column($playerHand, 'number'));
+    $includeK = in_array('K', array_column($playerHand, 'number'));
+    $includeQ = in_array('Q', array_column($playerHand, 'number'));
+    $includeJ = in_array('J', array_column($playerHand, 'number'));
+    $includeTen = in_array('10', array_column($playerHand, 'number'));
+    if ($includeA && $includeK || $includeA && $includeQ || $includeA && $includeJ || $includeA && $includeTen) {
+      echo "ブラックジャック！！\n";
+      echo "\nあなたの勝ち\n";
+      $brackjackWinningTip = $bet * 2.5;
+      $this->tip += $brackjackWinningTip ;
+      echo "所持金が" . $bet * 1.5 . "円増えた\n"; 
+      echo "あなたの所持金" . $this->getTip() . "円\n";
+    } else {
+      echo "\nあなたの勝ち\n";
+      $winningTip = $bet * 2;
+      $this->tip += $winningTip;
+      echo "所持金が" . $bet . "円増えた\n"; 
+      echo "あなたの所持金" . $this->getTip() . "円\n";
+    }
   }
 
   public function draw($bet)
