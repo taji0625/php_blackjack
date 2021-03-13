@@ -1,6 +1,6 @@
 <?php
 
-class deck
+class Deck
 {
   public function __construct($mark, $number, $calcNum)
   {
